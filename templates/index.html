@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReUseIt - Dale una nueva vida a lo que ya no usas</title>
+    <title>Inicio - ReUse Perú</title>
 </head>
 <body>
-  <header class="header">
-    <div class="header__text">
-      <h1>Dele un nuevo comienzo a los objetos</h1>
-    </div>
-  </header>
-  <main>
-  </main>
+    <h1>Bienvenido a ReUse Perú</h1>
+
+    {% if session['user_id'] %}
+        <p>Has iniciado sesión correctamente.</p>
+
+        <ul>
+            <li><a href="/publicar">Publicar un objeto</a></li>
+            <li><a href="/catalogo">Ver catálogo de objetos</a></li>
+            <li><a href="/mis_objetos">Ver tus objetos</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+        </ul>
+    {% else %}
+        <p>No estás logueado.</p>
+        <a href="/">Iniciar sesión</a> | 
+        <a href="/reg">Registrarse</a>
+    {% endif %}
 </body>
 </html>

@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalle - {{ objeto.nombre }}</title>
 </head>
 <body>
-    <header class="header">
-        <div class="header__text">
-            <h1>Detalle del Producto</h1>
-            <p></p>
-        </div>
-    </header>
-    <main>
-    </main>
-    
+    <h1>{{ objeto.nombre }}</h1>
+    <p>{{ objeto.descripcion }}</p>
+    <p>Contacto: {{ objeto.contacto }}</p>
+
+    {% if objeto.imagen %}
+        <img src="{{ objeto.imagen }}" alt="{{ objeto.nombre }}" width="200">
+    {% endif %}
+
+    <p>
+        <a href="/catalogo">Volver al catálogo</a>
+        {% if session['user_id'] == objeto.user_id %}
+            | <a href="/editar/{{ objeto.id }}">Editar</a>
+            | 
+            <form action="/eliminar/{{ objeto.id }}" method="POST" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        {% endif %}
+    </p>
 </body>
 </html>

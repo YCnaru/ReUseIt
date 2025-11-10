@@ -2,13 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Catálogo - ReUse Perú</title>
+    <title>Mis objetos</title>
 </head>
 <body>
-    <h1>Catálogo de Objetos</h1>
+    <h1>Mis objetos</h1>
 
-    <a href="/index">Volver al inicio</a>
-    <a href="/publicar">Publicar un objeto</a>
+    <a href="/index">Volver al inicio</a> | <a href="/publicar">Publicar nuevo objeto</a>
 
     {% if objetos %}
         <ul>
@@ -22,19 +21,17 @@
                 {% endif %}
                 <p>
                     <a href="/detalle/{{ obj.id }}">Ver detalle</a>
-                    {% if session['user_id'] == obj.user_id %}
-                        | <a href="/editar/{{ obj.id }}">Editar</a>
-                        | 
-                        <form action="/eliminar/{{ obj.id }}" method="POST" style="display:inline;">
-                            <button type="submit">Eliminar</button>
-                        </form>
-                    {% endif %}
+                    | <a href="/editar/{{ obj.id }}">Editar</a>
+                    | 
+                    <form action="/eliminar/{{ obj.id }}" method="POST" style="display:inline;">
+                        <button type="submit">Eliminar</button>
+                    </form>
                 </p>
             </li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>No hay objetos publicados.</p>
+        <p>No has publicado objetos aún.</p>
     {% endif %}
 </body>
 </html>
